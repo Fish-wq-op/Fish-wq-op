@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07151b">
+<title>冬夜 · Christmas Tree</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;overflow:hidden;color:#eafff6;background:radial-gradient(ellipse at 50% 42%,#173b39,#07151b 68%);font:15px system-ui,sans-serif}.scene{position:relative;width:min(100vw,440px);height:min(100vh,680px);display:grid;place-items:center;animation:arrive 1.2s both}.tree{position:relative;width:270px;height:420px;filter:drop-shadow(0 0 24px #42e7a255)}.leaf{position:absolute;left:50%;height:0;transform:translateX(-50%);border-left:var(--w) solid transparent;border-right:var(--w) solid transparent;border-bottom:var(--h) solid #11805e;filter:drop-shadow(0 0 10px #43ffb733)}.leaf:nth-child(1){--w:45px;--h:120px;top:48px;border-bottom-color:#55d9a1}.leaf:nth-child(2){--w:83px;--h:150px;top:112px}.leaf:nth-child(3){--w:120px;--h:170px;top:190px;border-bottom-color:#0b684e}.trunk{position:absolute;left:calc(50% - 17px);bottom:20px;width:34px;height:62px;border-radius:4px;background:linear-gradient(90deg,#4b3022,#a16a3d,#4b3022)}.star{position:absolute;z-index:2;left:calc(50% - 13px);top:17px;color:#ffe58a;font-size:30px;text-shadow:0 0 8px #fff2a1,0 0 24px #ffcf52;animation:twinkle 1.8s ease-in-out infinite alternate}.light{position:absolute;z-index:2;width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 7px 3px var(--c);animation:twinkle var(--d,1.7s) ease-in-out infinite alternate}.light:nth-of-type(5){left:46%;top:142px;--c:#ffe58a}.light:nth-of-type(6){left:35%;top:212px;--c:#ff657a;--d:1.2s}.light:nth-of-type(7){left:61%;top:228px;--c:#7deaff;--d:2s}.light:nth-of-type(8){left:28%;top:302px;--c:#ffe58a;--d:1.5s}.light:nth-of-type(9){left:53%;top:310px;--c:#ff657a;--d:1.9s}.light:nth-of-type(10){left:70%;top:330px;--c:#9dffcc;--d:1.3s}.halo{position:absolute;bottom:2px;left:50%;width:250px;height:34px;transform:translateX(-50%);border-radius:50%;background:#48ffc655;filter:blur(16px)}.snow{position:absolute;inset:0;pointer-events:none}.snow i{position:absolute;top:-10px;left:var(--x);width:3px;height:3px;border-radius:50%;background:#eaffff;opacity:.8;animation:fall var(--t) linear var(--delay) infinite}@keyframes arrive{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}@keyframes twinkle{to{opacity:.55;filter:brightness(1.5);transform:scale(1.2)}}@keyframes fall{to{transform:translate(var(--drift),105vh);opacity:.15}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<main class="scene" aria-label="发光的圣诞树">
+  <div class="snow" id="snow"></div>
+  <div class="tree" aria-hidden="true">
+    <span class="star">★</span><i class="leaf"></i><i class="leaf"></i><i class="leaf"></i>
+    <i class="light"></i><i class="light"></i><i class="light"></i><i class="light"></i><i class="light"></i><i class="light"></i>
+    <i class="trunk"></i><i class="halo"></i>
+  </div>
+</main>
+<script>
+const snow=document.querySelector('#snow');
+for(let n=0;n<34;n++){const f=document.createElement('i');f.style.setProperty('--x',Math.random()*100+'%');f.style.setProperty('--t',5+Math.random()*8+'s');f.style.setProperty('--delay',-Math.random()*12+'s');f.style.setProperty('--drift',Math.random()*70-35+'px');snow.append(f)}
+</script>
+</body>
+</html>
