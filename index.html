@@ -2,25 +2,76 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07151b">
-<title>冬夜 · Christmas Tree</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111d">
+<title>冬夜 · A Quiet Christmas</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;overflow:hidden;color:#eafff6;background:radial-gradient(ellipse at 50% 42%,#173b39,#07151b 68%);font:15px system-ui,sans-serif}.scene{position:relative;width:min(100vw,440px);height:min(100vh,680px);display:grid;place-items:center;animation:arrive 1.2s both}.tree{position:relative;width:270px;height:420px;filter:drop-shadow(0 0 24px #42e7a255)}.leaf{position:absolute;left:50%;height:0;transform:translateX(-50%);border-left:var(--w) solid transparent;border-right:var(--w) solid transparent;border-bottom:var(--h) solid #11805e;filter:drop-shadow(0 0 10px #43ffb733)}.leaf:nth-child(1){--w:45px;--h:120px;top:48px;border-bottom-color:#55d9a1}.leaf:nth-child(2){--w:83px;--h:150px;top:112px}.leaf:nth-child(3){--w:120px;--h:170px;top:190px;border-bottom-color:#0b684e}.trunk{position:absolute;left:calc(50% - 17px);bottom:20px;width:34px;height:62px;border-radius:4px;background:linear-gradient(90deg,#4b3022,#a16a3d,#4b3022)}.star{position:absolute;z-index:2;left:calc(50% - 13px);top:17px;color:#ffe58a;font-size:30px;text-shadow:0 0 8px #fff2a1,0 0 24px #ffcf52;animation:twinkle 1.8s ease-in-out infinite alternate}.light{position:absolute;z-index:2;width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 7px 3px var(--c);animation:twinkle var(--d,1.7s) ease-in-out infinite alternate}.light:nth-of-type(5){left:46%;top:142px;--c:#ffe58a}.light:nth-of-type(6){left:35%;top:212px;--c:#ff657a;--d:1.2s}.light:nth-of-type(7){left:61%;top:228px;--c:#7deaff;--d:2s}.light:nth-of-type(8){left:28%;top:302px;--c:#ffe58a;--d:1.5s}.light:nth-of-type(9){left:53%;top:310px;--c:#ff657a;--d:1.9s}.light:nth-of-type(10){left:70%;top:330px;--c:#9dffcc;--d:1.3s}.halo{position:absolute;bottom:2px;left:50%;width:250px;height:34px;transform:translateX(-50%);border-radius:50%;background:#48ffc655;filter:blur(16px)}.snow{position:absolute;inset:0;pointer-events:none}.snow i{position:absolute;top:-10px;left:var(--x);width:3px;height:3px;border-radius:50%;background:#eaffff;opacity:.8;animation:fall var(--t) linear var(--delay) infinite}@keyframes arrive{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}@keyframes twinkle{to{opacity:.55;filter:brightness(1.5);transform:scale(1.2)}}@keyframes fall{to{transform:translate(var(--drift),105vh);opacity:.15}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+:root{color-scheme:dark;--mint:#a8ffe0;--gold:#ffe2a0;--night:#07111d}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;overflow:hidden;display:grid;place-items:center;color:#e9fff7;background:radial-gradient(ellipse at 50% 39%,#183b43 0,#0d202d 38%,var(--night) 76%);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+body:before,body:after{content:"";position:fixed;pointer-events:none;border-radius:50%;filter:blur(1px)}
+body:before{width:min(90vw,540px);aspect-ratio:1;top:8%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,#78eac522 0 1px,transparent 2px);background-size:27px 27px;mask-image:radial-gradient(circle,black,transparent 70%);opacity:.5}
+body:after{inset:auto 0 0;height:30vh;background:linear-gradient(transparent,#07111d 90%)}
+.scene{position:relative;width:min(100vw,480px);height:min(100svh,760px);min-height:580px;display:grid;place-items:center;isolation:isolate;animation:enter 1.5s cubic-bezier(.2,.8,.2,1) both}
+.copy{position:absolute;top:7%;z-index:3;text-align:center;letter-spacing:.22em;text-transform:uppercase;color:#d9fff0;text-shadow:0 0 24px #a8ffe055}
+.copy small{display:block;color:#a8c9c4;font-size:9px;letter-spacing:.42em;margin-bottom:12px}.copy h1{margin:0;font:500 clamp(20px,5vw,25px)/1.3 Georgia,serif;letter-spacing:.18em}.copy p{margin:10px 0;color:#a5c1c0;font:10px/1.6 system-ui,sans-serif;letter-spacing:.2em}
+.tree{position:absolute;width:min(86vw,410px);height:min(106vw,510px);max-height:68vh;top:18%;filter:drop-shadow(0 15px 34px #0008)}
+.tree svg{width:100%;height:100%;overflow:visible}
+.fir{fill:url(#fir);stroke:#71e8b052;stroke-width:1.2;filter:url(#softGlow)}
+.fir-shadow{fill:#061c20;opacity:.72}
+.sheen{fill:none;stroke:url(#edge);stroke-width:2;stroke-linecap:round;opacity:.65;filter:url(#softGlow)}
+.garland{fill:none;stroke:url(#wire);stroke-width:2.2;stroke-linecap:round;opacity:.86;filter:url(#glow)}
+.bulb{stroke:#fff8df;stroke-opacity:.55;stroke-width:.7;filter:url(#glow);animation:glint var(--speed,2s) ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+.b1{fill:#ffe6a3}.b2{fill:#9dffe0}.b3{fill:#ff91a2}.b4{fill:#a8d7ff}
+.star{fill:url(#star);stroke:#fff5c8;stroke-width:1;filter:url(#starGlow);transform-box:fill-box;transform-origin:center;animation:star 2.4s ease-in-out infinite alternate}
+.orb{filter:url(#glow);stroke:#fff8dcaa;stroke-width:1}
+.trunk{fill:url(#wood)}.snow-cap{fill:#e2fff7;opacity:.78;filter:url(#glow)}
+.ground{position:absolute;bottom:8%;width:70%;height:9%;border-radius:50%;background:radial-gradient(ellipse,#68e7bf46,transparent 70%);filter:blur(12px)}
+.reflection{position:absolute;bottom:7%;width:48%;height:10%;background:linear-gradient(#66ffd51c,transparent);filter:blur(8px);transform:scaleY(-1);opacity:.5;clip-path:polygon(25% 0,75% 0,100% 100%,0 100%)}
+.snow{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none}.snow i{position:absolute;top:-12px;left:var(--x);width:var(--size);height:var(--size);border-radius:50%;background:#eaffff;opacity:var(--alpha);box-shadow:0 0 8px #cfffff;animation:fall var(--time) linear var(--delay) infinite}
+.vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse,transparent 35%,#03091277 100%)}
+@keyframes enter{from{opacity:0;transform:translateY(22px) scale(.97);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@keyframes glint{from{opacity:.55;transform:scale(.78)}to{opacity:1;transform:scale(1.3)}}
+@keyframes star{from{transform:scale(.92) rotate(-4deg)}to{transform:scale(1.08) rotate(4deg)}}
+@keyframes fall{to{transform:translate3d(var(--drift),110svh,0);opacity:.08}}
+@media(max-height:650px){.scene{min-height:500px}.copy{top:4%}.tree{top:14%;max-height:66vh}.ground{bottom:4%}.reflection{bottom:3%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<main class="scene" aria-label="发光的圣诞树">
-  <div class="snow" id="snow"></div>
+<main class="scene" aria-label="冬夜中闪耀的圣诞树">
+  <header class="copy"><small>DECEMBER · 24</small><h1>愿冬夜有光</h1><p>A LITTLE WONDER FOR YOU</p></header>
+  <div class="ground"></div><div class="reflection"></div>
   <div class="tree" aria-hidden="true">
-    <span class="star">★</span><i class="leaf"></i><i class="leaf"></i><i class="leaf"></i>
-    <i class="light"></i><i class="light"></i><i class="light"></i><i class="light"></i><i class="light"></i><i class="light"></i>
-    <i class="trunk"></i><i class="halo"></i>
+    <svg viewBox="0 0 400 500" role="img">
+      <defs>
+        <linearGradient id="fir" x1=".2" y1="0" x2=".8" y2="1"><stop stop-color="#b5f2d2"/><stop offset=".18" stop-color="#287a62"/><stop offset=".56" stop-color="#105744"/><stop offset="1" stop-color="#092d31"/></linearGradient>
+        <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d4ffe9" stop-opacity=".8"/><stop offset="1" stop-color="#62d9b2" stop-opacity=".05"/></linearGradient>
+        <linearGradient id="wire"><stop stop-color="#ffe5a0"/><stop offset=".48" stop-color="#a8ffe0"/><stop offset="1" stop-color="#ffd4a0"/></linearGradient>
+        <linearGradient id="star" x2=".8" y2="1"><stop stop-color="#fffbe0"/><stop offset=".5" stop-color="#ffe69a"/><stop offset="1" stop-color="#e8a94d"/></linearGradient>
+        <linearGradient id="wood" x2="1"><stop stop-color="#543523"/><stop offset=".5" stop-color="#b27c4c"/><stop offset="1" stop-color="#4d3023"/></linearGradient>
+        <radialGradient id="orb"><stop stop-color="#fff" stop-opacity=".95"/><stop offset=".25" stop-color="#ffdc96"/><stop offset="1" stop-color="#b56a42"/></radialGradient>
+        <filter id="glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="softGlow" x="-50%" y="-40%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="starGlow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <ellipse cx="200" cy="474" rx="115" ry="17" fill="#8ffff0" opacity=".1" filter="url(#softGlow)"/>
+      <path class="fir-shadow" d="M200 45 169 105 182 101 143 163 160 157 111 226 133 219 76 291 108 282 48 358 93 349 30 416 Q200 449 370 416 L307 349 352 358 292 282 324 291 267 219 289 226 240 157 257 163 218 101 231 105Z"/>
+      <path class="fir" d="M200 39 167 105 182 99 139 164 160 157 105 229 132 219 70 295 106 284 42 365 90 352 24 424 Q200 461 376 424 L310 352 358 365 294 284 330 295 268 219 295 229 240 157 261 164 218 99 233 105Z"/>
+      <path class="sheen" d="M200 46 171 105 186 100 146 163 166 157 113 228 139 220 79 294 113 285 52 362 99 351 37 416"/>
+      <path class="garland" d="M175 113 Q290 119 146 177 T132 239 Q331 239 106 305 T99 375 Q362 368 60 419"/>
+      <path class="trunk" d="M177 407 223 407 230 472 170 472Z"/>
+      <path class="snow-cap" d="M185 94q15-9 30 0l-4 5q-11-6-22 0zM156 153q19-10 38 0l-5 5q-14-6-28 1zM121 215q24-11 48 0l-5 6q-18-7-36 0zM84 278q29-12 57 0l-6 7q-23-8-45 0zM56 344q35-12 68 0l-7 7q-26-8-52 0z"/>
+      <path class="star" d="m200 8 8 18 20 2-15 13 5 20-18-11-18 11 5-20-15-13 20-2z"/>
+      <g class="bulb b1"><circle cx="208" cy="131" r="4"/></g><g class="bulb b2" style="--speed:1.4s"><circle cx="164" cy="187" r="3.5"/></g><g class="bulb b3" style="--speed:2.2s"><circle cx="230" cy="204" r="4"/></g><g class="bulb b4" style="--speed:1.7s"><circle cx="119" cy="261" r="3.5"/></g><g class="bulb b1" style="--speed:2.5s"><circle cx="273" cy="270" r="4"/></g><g class="bulb b2" style="--speed:1.6s"><circle cx="176" cy="294" r="3.5"/></g><g class="bulb b3" style="--speed:2.1s"><circle cx="319" cy="328" r="4"/></g><g class="bulb b4" style="--speed:1.3s"><circle cx="120" cy="361" r="3.5"/></g><g class="bulb b1" style="--speed:2.3s"><circle cx="236" cy="382" r="4"/></g>
+      <circle class="orb" cx="253" cy="167" r="7" fill="url(#orb)"/><circle class="orb" cx="146" cy="244" r="6" fill="url(#orb)"/><circle class="orb" cx="293" cy="300" r="7" fill="url(#orb)"/><circle class="orb" cx="195" cy="346" r="6" fill="url(#orb)"/>
+    </svg>
   </div>
+  <div class="snow" id="snow"></div><div class="vignette"></div>
 </main>
 <script>
 const snow=document.querySelector('#snow');
-for(let n=0;n<34;n++){const f=document.createElement('i');f.style.setProperty('--x',Math.random()*100+'%');f.style.setProperty('--t',5+Math.random()*8+'s');f.style.setProperty('--delay',-Math.random()*12+'s');f.style.setProperty('--drift',Math.random()*70-35+'px');snow.append(f)}
+for(let n=0;n<42;n++){const f=document.createElement('i');f.style.setProperty('--x',Math.random()*100+'%');f.style.setProperty('--size',1+Math.random()*3+'px');f.style.setProperty('--time',7+Math.random()*10+'s');f.style.setProperty('--delay',-Math.random()*16+'s');f.style.setProperty('--drift',Math.random()*90-45+'px');f.style.setProperty('--alpha',.25+Math.random()*.65);snow.append(f)}
 </script>
 </body>
 </html>
